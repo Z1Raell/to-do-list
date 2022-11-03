@@ -10,8 +10,8 @@ let toDOItems = document.querySelectorAll(".todo-items");
 
 
 
-if (localStorage.getItem('token')) {
-    toDoList = (JSON.parse(localStorage.getItem('token')))
+if (localStorage.getItem('todo')) {
+    toDoList = (JSON.parse(localStorage.getItem('todo')))
     dispalytoDo();
 }
 
@@ -19,7 +19,7 @@ list.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete')) {
         let neadParentTarget = e.target.parentElement.parentElement;
         toDoList.splice(+(neadParentTarget.getAttribute('data-id')), 1);
-        localStorage.setItem('token', JSON.stringify(toDoList));
+        localStorage.setItem('todo', JSON.stringify(toDoList));
         dispalytoDo();
     }
 
@@ -31,7 +31,7 @@ list.addEventListener('click', (e) => {
                 item.checked = !item.checked
             }
         });
-        localStorage.setItem('token', JSON.stringify(toDoList));
+        localStorage.setItem('todo', JSON.stringify(toDoList));
         dispalytoDo();
     }
 
@@ -47,7 +47,7 @@ add.addEventListener('click', () => {
         checked: false
     }
     toDoList.push(task);
-    localStorage.setItem('token', JSON.stringify(toDoList))
+    localStorage.setItem('todo', JSON.stringify(toDoList))
     dispalytoDo();
     if (toDoList.length === 0) {
         list.innerHTML = '';
